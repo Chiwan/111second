@@ -86,7 +86,9 @@ public class IHMJeuInfini extends FenetreAbstraite implements ActionListener{
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 
-				if(arg0.getKeyCode() == KeyEvent.VK_ENTER){		
+				switch(arg0.getKeyCode()) {
+				case KeyEvent.VK_ENTER:
+
 					int aleaTmp = alea;
 					String questionTmp = question;
 					ImageIcon imageTmp = image;
@@ -106,7 +108,7 @@ public class IHMJeuInfini extends FenetreAbstraite implements ActionListener{
 
 					if(o.findWord(o.getListeAlea(aleaTmp),answer.toUpperCase(), charTmp)){
 						//String text =  questionTmp + "\n" + 	"  Réponse vraie : "+ answer;
-						String text = "<html>"+ questionTmp + "<br> Réponse vraie : " + o.getCorrectAnswer() +"</html>";
+						String text = "<html>"+ questionTmp + "<br> Réponse correcte : " + o.getCorrectAnswer() +"</html>";
 						jl2.setText(text);
 					}
 					else{
@@ -115,6 +117,13 @@ public class IHMJeuInfini extends FenetreAbstraite implements ActionListener{
 					}
 					
 					lb2.setText(null);	
+					break;
+					
+				case KeyEvent.VK_ALPHANUMERIC:	
+					System.out.println(arg0.getKeyChar());
+					voix.playText(arg0.paramString());
+					break;
+					
 
 				}
 			}
@@ -159,7 +168,7 @@ public class IHMJeuInfini extends FenetreAbstraite implements ActionListener{
 			
 			if(o.findWord(o.getListeAlea(aleaTmp),answer.toUpperCase(), charTmp)){
 				//String text =  questionTmp + "\n" + 	"  Réponse vraie : "+ answer;
-				String text = "<html>"+ questionTmp + "<br> Réponse vraie :" + answer +"</html>";
+				String text = "<html>"+ questionTmp + "<br> Réponse correcte :" + answer +"</html>";
 				jl2.setText(text);
 			}
 			else{
